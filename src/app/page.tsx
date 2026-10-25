@@ -7,7 +7,7 @@ import {
   getServices,
   getTestimonials,
 } from '@/lib/content';
-import { HeroItem, HeroStage } from '@/components/home/hero-intro';
+import { HeroClarity } from '@/components/home/hero-clarity';
 import { HeroWorkStack } from '@/components/home/hero-work-stack';
 import { Testimonials } from '@/components/home/testimonials';
 import { ProjectCard } from '@/components/projects/project-card';
@@ -32,44 +32,48 @@ export default async function HomePage() {
   return (
     <>
       {/* Opening */}
-      <section
-        aria-labelledby="hero-title"
-        className="container-site pb-16 pt-10 md:pb-20 md:pt-16 lg:pt-24"
-      >
-        <HeroStage className="grid gap-10 lg:grid-cols-12 lg:items-end">
-          <div className="lg:col-span-8">
-            <HeroItem>
-              <p className="meta flex items-center gap-3 text-fg-muted">
+      <section aria-labelledby="hero-title" className="relative">
+        <HeroClarity className="container-site flex flex-col justify-end pb-16 pt-10 md:pb-20 md:pt-16 lg:min-h-[calc(92svh-var(--nav-offset))] lg:pt-24">
+          <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
+            <div className="lg:col-span-8">
+              <p
+                data-hero-item="meta"
+                className="meta flex items-center gap-3 text-fg-muted"
+              >
                 <span className="size-1.5 rounded-full bg-fg" aria-hidden />
                 Duncan Tima — UI/UX &amp; Product Designer
               </p>
-            </HeroItem>
-            <HeroItem>
-              <h1
-                id="hero-title"
-                className="mt-8 text-display font-medium text-balance"
-              >
-                Complex products.
-                <br />
-                <span className="text-fg-muted">Clear experiences.</span>
+              <h1 id="hero-title" className="mt-8 text-display font-medium">
+                <span className="-mb-[0.1em] block overflow-hidden pb-[0.1em]">
+                  <span data-hero-line="complex" className="block text-fg-muted">
+                    Complex products.
+                  </span>
+                </span>
+                <span data-hero-line="clear" className="block">
+                  Clear experiences.
+                </span>
               </h1>
-            </HeroItem>
-          </div>
-          <div className="lg:col-span-4 lg:pb-3">
-            <HeroItem>
-              <p className="max-w-md text-lead text-fg-muted">
+            </div>
+            <div className="lg:col-span-4 lg:pb-3">
+              <p
+                data-hero-item="lead"
+                className="max-w-md text-lead text-fg-muted"
+              >
                 I bring visual craft and product thinking together to make
                 complex tools easier to understand and easier to use.
               </p>
-            </HeroItem>
-            <HeroItem className="mt-8 flex flex-wrap gap-3">
-              <ButtonLink href="/projects">View projects</ButtonLink>
-              <ButtonLink href="/contact" variant="secondary">
-                Start an inquiry
-              </ButtonLink>
-            </HeroItem>
+              <div
+                data-hero-item="actions"
+                className="mt-8 flex flex-wrap gap-3"
+              >
+                <ButtonLink href="/projects">View projects</ButtonLink>
+                <ButtonLink href="/contact" variant="secondary">
+                  Start an inquiry
+                </ButtonLink>
+              </div>
+            </div>
           </div>
-        </HeroStage>
+        </HeroClarity>
       </section>
 
       <section aria-label="Project previews" className="container-site">

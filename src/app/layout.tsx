@@ -53,7 +53,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <head>
         <noscript>
-          <style>{`[data-reveal],[data-hero-item]{opacity:1!important;transform:none!important}`}</style>
+          <style>{`[data-reveal],[data-hero-item],[data-hero-line],[data-frag],[data-guide]{opacity:1!important;transform:none!important}`}</style>
         </noscript>
       </head>
       <body className="min-h-dvh bg-bg text-fg antialiased">

@@ -206,6 +206,16 @@
     }
   }
 
+  /* Hero intro start states, so nothing flashes before GSAP takes over. */
+  @media (prefers-reduced-motion: no-preference) {
+    [data-hero-clarity] :is([data-hero-item], [data-hero-line], [data-frag], [data-guide]) {
+      opacity: 0;
+    }
+  }
+  [data-hero-clarity] :is([data-noise], [data-cursor]) {
+    opacity: 0;
+  }
+
   .hairline {
     border-color: var(--border);
   }
