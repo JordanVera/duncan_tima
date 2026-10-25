@@ -8,7 +8,6 @@ import {
   getTestimonials,
 } from '@/lib/content';
 import { HeroClarity } from '@/components/home/hero-clarity';
-import { HeroWorkStack } from '@/components/home/hero-work-stack';
 import { Testimonials } from '@/components/home/testimonials';
 import { ProjectCard } from '@/components/projects/project-card';
 import { ClosingCta } from '@/components/layout/closing-cta';
@@ -33,7 +32,7 @@ export default async function HomePage() {
     <>
       {/* Opening */}
       <section aria-labelledby="hero-title" className="relative">
-        <HeroClarity className="container-site flex flex-col justify-end pb-16 pt-10 md:pb-20 md:pt-16 lg:min-h-[calc(92svh-var(--nav-offset))] lg:pt-24">
+        <HeroClarity className="container-site pb-10 pt-6 md:pb-14 lg:pt-10">
           <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
             <div className="lg:col-span-8">
               <p
@@ -45,7 +44,10 @@ export default async function HomePage() {
               </p>
               <h1 id="hero-title" className="mt-8 text-display font-medium">
                 <span className="-mb-[0.1em] block overflow-hidden pb-[0.1em]">
-                  <span data-hero-line="complex" className="block text-fg-muted">
+                  <span
+                    data-hero-line="complex"
+                    className="block text-fg-muted"
+                  >
                     Complex products.
                   </span>
                 </span>
@@ -74,31 +76,6 @@ export default async function HomePage() {
             </div>
           </div>
         </HeroClarity>
-      </section>
-
-      <section aria-label="Project previews" className="container-site">
-        <HeroWorkStack
-          items={[
-            {
-              slug: proof.slug,
-              name: proof.name,
-              title: proof.title,
-              cover: proof.cover,
-            },
-            {
-              slug: proofops.slug,
-              name: proofops.name,
-              title: proofops.title,
-              cover: proofops.cover,
-            },
-            {
-              slug: userwise.slug,
-              name: userwise.name,
-              title: userwise.title,
-              cover: userwise.cover,
-            },
-          ]}
-        />
       </section>
 
       {/* Selected work */}
