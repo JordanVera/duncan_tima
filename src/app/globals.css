@@ -1,0 +1,229 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ---------------------------------------------------------------------------
+   Semantic tokens. Light values live on :root, dark values on .dark.
+   Components only reference the semantic names, never raw hex values.
+--------------------------------------------------------------------------- */
+:root {
+  --bg: #f4f3f0;
+  --surface-1: #ecebe7;
+  --surface-2: #e3e2dd;
+  --surface-3: #d8d7d1;
+  --fg: #111112;
+  --fg-muted: #4f4f52;
+  --fg-subtle: #6f6f73;
+  --border: rgb(17 17 18 / 0.12);
+  --border-strong: rgb(17 17 18 / 0.24);
+  --inverse-bg: #111112;
+  --inverse-fg: #f4f3f0;
+  --glass: rgb(244 243 240 / 0.66);
+  --glass-strong: rgb(244 243 240 / 0.86);
+  --glass-border: rgb(17 17 18 / 0.1);
+  --media-frame: #e6e5e0;
+  --focus: #111112;
+  --danger: #8a1c1c;
+  --shadow-float: 0 1px 0 rgb(255 255 255 / 0.6) inset, 0 12px 40px -12px rgb(17 17 18 / 0.18);
+
+  --nav-offset: 6.5rem;
+  --container: 88rem;
+  --gutter: clamp(1.25rem, 3.2vw, 2.5rem);
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 160ms;
+  --dur-base: 280ms;
+  --dur-slow: 560ms;
+
+  color-scheme: light;
+}
+
+.dark {
+  --bg: #0b0b0c;
+  --surface-1: #121214;
+  --surface-2: #1a1a1d;
+  --surface-3: #242428;
+  --fg: #f5f5f4;
+  --fg-muted: #a8a8ad;
+  --fg-subtle: #85858b;
+  --border: rgb(245 245 244 / 0.1);
+  --border-strong: rgb(245 245 244 / 0.22);
+  --inverse-bg: #f5f5f4;
+  --inverse-fg: #0b0b0c;
+  --glass: rgb(22 22 25 / 0.58);
+  --glass-strong: rgb(18 18 20 / 0.84);
+  --glass-border: rgb(245 245 244 / 0.1);
+  --media-frame: #141416;
+  --focus: #f5f5f4;
+  --danger: #ff9b9b;
+  --shadow-float: 0 1px 0 rgb(255 255 255 / 0.05) inset, 0 16px 48px -16px rgb(0 0 0 / 0.7);
+
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface-1: var(--surface-1);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+  --color-fg: var(--fg);
+  --color-fg-muted: var(--fg-muted);
+  --color-fg-subtle: var(--fg-subtle);
+  --color-line: var(--border);
+  --color-line-strong: var(--border-strong);
+  --color-inverse: var(--inverse-bg);
+  --color-on-inverse: var(--inverse-fg);
+  --color-media: var(--media-frame);
+  --color-danger: var(--danger);
+
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+
+  --text-display: clamp(2.75rem, 7.2vw, 6.75rem);
+  --text-display--line-height: 0.96;
+  --text-display--letter-spacing: -0.045em;
+  --text-h1: clamp(2.5rem, 5.4vw, 5rem);
+  --text-h1--line-height: 1;
+  --text-h1--letter-spacing: -0.04em;
+  --text-h2: clamp(1.875rem, 3.4vw, 3.25rem);
+  --text-h2--line-height: 1.05;
+  --text-h2--letter-spacing: -0.035em;
+  --text-h3: clamp(1.375rem, 2vw, 1.875rem);
+  --text-h3--line-height: 1.15;
+  --text-h3--letter-spacing: -0.025em;
+  --text-lead: clamp(1.125rem, 1.4vw, 1.375rem);
+  --text-lead--line-height: 1.5;
+  --text-lead--letter-spacing: -0.01em;
+  --text-body: 1rem;
+  --text-body--line-height: 1.65;
+  --text-meta: 0.75rem;
+  --text-meta--line-height: 1.4;
+  --text-meta--letter-spacing: 0.04em;
+
+  --radius-sm: 0.5rem;
+  --radius-md: 0.875rem;
+  --radius-lg: 1.25rem;
+  --radius-xl: 1.75rem;
+
+  --shadow-float: var(--shadow-float);
+
+  --ease-out-expo: var(--ease-out);
+  --ease-in-out-expo: var(--ease-in-out);
+
+  --spacing-section: clamp(6rem, 12vw, 11rem);
+  --spacing-block: clamp(3rem, 6vw, 5.5rem);
+}
+
+@layer base {
+  html {
+    background: var(--bg);
+    color: var(--fg);
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+    scroll-padding-top: var(--nav-offset);
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv11";
+  }
+
+  ::selection {
+    background: var(--fg);
+    color: var(--bg);
+  }
+
+  h1, h2, h3, h4, [id] {
+    scroll-margin-top: var(--nav-offset);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *, *::before, *::after {
+      transition-duration: 0.01ms !important;
+      animation-duration: 0.01ms !important;
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+}
+
+@layer components {
+  .container-site {
+    width: 100%;
+    max-width: var(--container);
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+  }
+
+  .meta {
+    font-family: var(--font-mono);
+    font-size: var(--text-meta);
+    line-height: 1.4;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  /* Glass surface with opaque fallbacks for unsupported or reduced-transparency contexts. */
+  .glass {
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-float);
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
+    backdrop-filter: blur(18px) saturate(140%);
+  }
+
+  .glass-strong {
+    background: var(--glass-strong);
+  }
+
+  @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .glass {
+      background: var(--surface-1);
+    }
+  }
+
+  @media (prefers-reduced-transparency: reduce) {
+    .glass {
+      background: var(--surface-1);
+      -webkit-backdrop-filter: none;
+      backdrop-filter: none;
+    }
+  }
+
+  .hairline {
+    border-color: var(--border);
+  }
+
+  .prose-case p + p {
+    margin-top: 1.1em;
+  }
+
+  .logo-light {
+    display: block;
+  }
+  .logo-dark {
+    display: none;
+  }
+  .dark .logo-light {
+    display: none;
+  }
+  .dark .logo-dark {
+    display: block;
+  }
+}
