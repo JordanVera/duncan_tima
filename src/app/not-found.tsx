@@ -19,14 +19,14 @@ export default async function NotFound() {
         id="nf-title"
         className="mt-6 max-w-3xl text-h1 font-medium text-balance"
       >
-        This page doesn’t exist, but the work does.
+        This page doesn’t exist, but our work does.
       </h1>
       <p className="mt-6 max-w-xl text-lead text-fg-muted">
-        The link may be out of date. Older project links now live under
-        Projects.
+        The link may be out of date. Explore our case studies below or head back
+        to the ABCD overview.
       </p>
       <div className="mt-10 flex flex-wrap gap-3">
-        <ButtonLink href="/projects">View projects</ButtonLink>
+        <ButtonLink href="/projects">Explore our work</ButtonLink>
         <ButtonLink href="/" variant="secondary">
           Back to home
         </ButtonLink>

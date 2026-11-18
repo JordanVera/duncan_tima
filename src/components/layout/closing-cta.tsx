@@ -3,8 +3,8 @@ import { discoveryCall } from "@/lib/site-config";
 
 export function ClosingCta({
   eyebrow = "Start a project",
-  title = "Have a complex product that needs to feel simple?",
-  body = "Tell me what you’re building and where people get stuck. Prefer to talk it through first? Request a discovery call.",
+  title = "Ready to move forward with a clearer direction?",
+  body = "Tell us what you’re building, where your brand or product feels fragmented, and what outcome matters most. Prefer to talk it through first? Request a discovery call.",
 }: {
   eyebrow?: string;
   title?: string;
@@ -18,7 +18,10 @@ export function ClosingCta({
           className="pointer-events-none absolute inset-0 opacity-[0.5] [background-image:linear-gradient(var(--border)_1px,transparent_1px),linear-gradient(90deg,var(--border)_1px,transparent_1px)] [background-size:56px_56px] [mask-image:radial-gradient(ellipse_at_top_right,black,transparent_65%)]"
         />
         <div className="relative max-w-3xl">
-          <p className="meta mb-6 text-fg-subtle">{eyebrow}</p>
+          <p className="meta mb-6 flex items-center gap-2.5 text-fg-subtle">
+            <span className="size-1.5 rounded-full bg-accent" aria-hidden />
+            {eyebrow}
+          </p>
           <h2 id="closing-cta" className="text-h1 font-medium text-balance">
             {title}
           </h2>

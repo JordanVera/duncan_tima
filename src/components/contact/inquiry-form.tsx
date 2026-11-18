@@ -11,7 +11,7 @@ import { siteConfig } from "@/lib/site-config";
 const initialState: InquiryState = { status: "idle" };
 
 const control =
-  "w-full rounded-[var(--radius-md)] border border-line bg-surface-1 px-4 text-[0.95rem] text-fg placeholder:text-fg-subtle transition-colors hover:border-line-strong focus-visible:border-fg aria-[invalid=true]:border-[var(--danger)]";
+  "w-full rounded-[var(--radius-md)] border border-line bg-surface-1 px-4 text-[0.95rem] text-fg placeholder:text-fg-subtle transition-colors hover:border-line-strong focus-visible:border-accent aria-[invalid=true]:border-[var(--danger)]";
 
 export function InquiryForm() {
   const [state, formAction, pending] = useActionState(submitInquiry, initialState);
@@ -35,10 +35,10 @@ export function InquiryForm() {
   if (state.status === "success") {
     return (
       <div ref={statusRef} tabIndex={-1} role="status" className="rounded-[var(--radius-lg)] border border-line bg-surface-1 p-8 sm:p-10">
-        <CheckCircle2 className="size-7 text-fg" strokeWidth={1.5} aria-hidden />
-        <h2 className="mt-6 text-h3 font-medium">Thanks, {state.name}. Your inquiry was sent.</h2>
+        <CheckCircle2 className="size-7 text-accent" strokeWidth={1.5} aria-hidden />
+        <h2 className="mt-6 text-h3 font-medium">Thanks, {state.name}. Your inquiry is with our team.</h2>
         <p className="mt-3 max-w-md leading-relaxed text-fg-muted">
-          I’ll reply to the email address you provided. If it’s urgent, you can also reach me at{" "}
+          We’ll review your brief and reply to the email address you provided. If your timeline is urgent, reach us directly at{" "}
           <a className="text-fg underline underline-offset-4" href={`mailto:${siteConfig.email}`}>
             {siteConfig.email}
           </a>
@@ -61,7 +61,6 @@ export function InquiryForm() {
       ref={formRef}
       action={formAction}
       onSubmit={(event) => {
-        // React resets uncontrolled fields after a form action; submitting manually keeps the visitor's input intact.
         event.preventDefault();
         const data = new FormData(event.currentTarget);
         startTransition(() => formAction(data));
@@ -88,16 +87,16 @@ export function InquiryForm() {
         <Field label="Company" htmlFor={`${id}-company`} error={errors.company} errorId={`${id}-company-error`}>
           <input {...field("company")} type="text" autoComplete="organization" className={cn(control, "h-12")} />
         </Field>
-        <Field label="Project type" required htmlFor={`${id}-projectType`} error={errors.projectType} errorId={`${id}-projectType-error`}>
+        <Field label="Engagement focus" required htmlFor={`${id}-projectType`} error={errors.projectType} errorId={`${id}-projectType-error`}>
           <Select {...field("projectType")} required placeholder="Choose one" options={projectTypes} />
         </Field>
       </div>
 
       <Field
-        label="Project description"
+        label="Project brief"
         required
         htmlFor={`${id}-description`}
-        hint="What are you building, who is it for, and where do people get stuck?"
+        hint="What are you building, who is it for, and what challenge are we solving together?"
         hintId={`${id}-description-hint`}
         error={errors.description}
         errorId={`${id}-description-error`}
@@ -152,7 +151,7 @@ export function InquiryForm() {
           </p>
           <a
             href={state.mailto}
-            className="mt-4 ml-8 inline-flex h-11 items-center gap-2 rounded-full bg-inverse px-5 text-sm font-medium text-on-inverse"
+            className="mt-4 ml-8 inline-flex h-11 items-center gap-2 rounded-full bg-[#2e4d3b] px-5 text-sm font-medium text-[#f6f3eb]"
           >
             <Mail className="size-4" strokeWidth={1.75} aria-hidden />
             Email {siteConfig.email}
@@ -164,7 +163,7 @@ export function InquiryForm() {
         <button
           type="submit"
           disabled={pending}
-          className="group inline-flex h-14 items-center justify-center gap-2 rounded-full bg-inverse px-7 font-medium text-on-inverse transition-[transform,opacity] duration-200 ease-out-expo hover:-translate-y-px disabled:translate-y-0 disabled:opacity-70"
+          className="group inline-flex h-14 items-center justify-center gap-2 rounded-full bg-[#2e4d3b] px-7 font-medium text-[#f6f3eb] border border-[#2e4d3b] dark:border-white/15 transition-[transform,opacity,background-color] duration-200 ease-out-expo hover:bg-[#385d47] hover:-translate-y-px disabled:translate-y-0 disabled:opacity-70"
         >
           {pending ? (
             <>

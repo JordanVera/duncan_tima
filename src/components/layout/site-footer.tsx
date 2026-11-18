@@ -9,19 +9,18 @@ export function SiteFooter() {
         <div className="flex flex-col gap-5 md:col-span-5">
           <Link
             href="/"
-            aria-label="Duncan Tima, home"
+            aria-label={`${siteConfig.fullName}, home`}
             className="w-fit rounded-xl"
           >
-            <Logo className="w-24" />
+            <Logo className="w-48" sizes="200px" />
           </Link>
           <p className="max-w-xs text-sm leading-relaxed text-fg-muted">
-            Duncan Tima — UI/UX and product designer making complex products
-            clear.
+            {siteConfig.description}
           </p>
         </div>
 
         <nav aria-label="Footer" className="md:col-span-3">
-          <p className="meta mb-4 text-fg-subtle">Site</p>
+          <p className="meta mb-4 text-fg-subtle">Consultancy</p>
           <ul className="flex flex-col gap-1 text-sm">
             {[...navLinks, { href: '/contact', label: 'Contact' }].map((l) => (
               <li key={l.href}>
@@ -37,7 +36,7 @@ export function SiteFooter() {
         </nav>
 
         <div className="md:col-span-4">
-          <p className="meta mb-4 text-fg-subtle">Contact</p>
+          <p className="meta mb-4 text-fg-subtle">Inquiries</p>
           <ul className="flex flex-col gap-1 text-sm">
             <li>
               <a
@@ -69,8 +68,8 @@ export function SiteFooter() {
         </div>
       </div>
       <div className="container-site flex flex-col gap-2 border-t border-line py-6 text-xs text-fg-subtle sm:flex-row sm:justify-between">
-        <p>© {new Date().getFullYear()} Duncan Tima</p>
-        <p>UI/UX &amp; Product Design</p>
+        <p>© {new Date().getFullYear()} {siteConfig.fullName}</p>
+        <p>{siteConfig.descriptor}</p>
       </div>
     </footer>
   );

@@ -1,11 +1,10 @@
 /**
  * Content access layer. Pages and components only call these functions,
- * so swapping local data for a CMS (e.g. Sanity GROQ queries) only changes
- * the bodies below, not the page components.
+ * so swapping local data for a CMS only changes the bodies below.
  */
 import { about } from '@/content/about';
 import { projects } from '@/content/projects';
-import { services, servicesIntro } from '@/content/services';
+import { services, servicesIntro, toolkit } from '@/content/services';
 import { testimonials } from '@/content/testimonials';
 import type { CaseStudyBlock, Project } from '@/content/types';
 
@@ -27,7 +26,7 @@ export async function getNextProject(slug: string): Promise<Project> {
 }
 
 export async function getServices() {
-  return { intro: servicesIntro, items: services };
+  return { intro: servicesIntro, items: services, toolkit };
 }
 
 export async function getAbout() {

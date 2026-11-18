@@ -3,13 +3,13 @@ import { join } from 'node:path';
 import { ImageResponse } from 'next/og';
 import { siteConfig } from '@/lib/site-config';
 
-export const alt = 'Duncan Tima — UI/UX & Product Designer';
+export const alt = 'ABCD — A Better Creative Direction';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
 export default async function OpengraphImage() {
   const logo = await readFile(
-    join(process.cwd(), 'public', siteConfig.logo.dark.src),
+    join(process.cwd(), 'public', siteConfig.logo.horizontal.dark.src),
   );
   const logoSrc = `data:image/png;base64,${logo.toString('base64')}`;
 
@@ -22,8 +22,8 @@ export default async function OpengraphImage() {
         flexDirection: 'column',
         justifyContent: 'space-between',
         padding: '72px 80px',
-        background: '#0b0b0c',
-        color: '#f4f3f0',
+        background: '#1b1b1b',
+        color: '#f6f3eb',
       }}
     >
       <div
@@ -33,34 +33,58 @@ export default async function OpengraphImage() {
           justifyContent: 'space-between',
         }}
       >
-        <img src={logoSrc} width={140} height={104} alt="" />
+        <img src={logoSrc} width={300} height={88} alt="" />
         <div
           style={{
-            fontSize: 22,
-            letterSpacing: 4,
+            display: 'flex',
+            alignItems: 'center',
+            gap: 12,
+            fontSize: 20,
+            letterSpacing: 3,
             textTransform: 'uppercase',
-            color: '#8a8a8f',
+            color: '#e7e6e2',
           }}
         >
-          UI/UX & Product Design
+          <div
+            style={{
+              width: 12,
+              height: 12,
+              borderRadius: 999,
+              background: '#4f8a68',
+            }}
+          />
+          Independent Creative Consultancy
         </div>
       </div>
       <div style={{ display: 'flex', flexDirection: 'column' }}>
-        <div style={{ fontSize: 84, lineHeight: 1.02, letterSpacing: -3 }}>
-          Complex products.
+        <div style={{ fontSize: 78, lineHeight: 1.04, letterSpacing: -3 }}>
+          Good design is
         </div>
         <div
           style={{
-            fontSize: 84,
-            lineHeight: 1.02,
+            fontSize: 78,
+            lineHeight: 1.04,
             letterSpacing: -3,
-            color: '#8a8a8f',
+            color: '#b3b2ab',
           }}
         >
-          Clear experiences.
+          just the beginning.
         </div>
-        <div style={{ marginTop: 36, fontSize: 28, color: '#b4b4b8' }}>
-          Duncan Tima
+        <div
+          style={{
+            marginTop: 34,
+            display: 'flex',
+            alignItems: 'center',
+            gap: 16,
+            fontSize: 24,
+            color: '#e7e6e2',
+          }}
+        >
+          <span>Brand Design</span>
+          <span style={{ color: '#4f8a68' }}>·</span>
+          <span>Digital Experiences</span>
+          <span style={{ color: '#4f8a68' }}>·</span>
+          <span>Product Design</span>
         </div>
       </div>
     </div>,

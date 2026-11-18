@@ -9,15 +9,9 @@ import { cn } from '@/lib/cn';
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 /**
- * Opening scene: scattered interface fragments resolve into a product UI
+ * Opening scene: scattered interface fragments resolve into a studio & product UI
  * while the headline arrives. The copy is passed in as children so it stays
  * server-rendered.
- *
- * Initial hidden states live in globals.css (`[data-hero-clarity]`) so nothing
- * flashes before hydration. Each element is owned by one animation:
- * `[data-frag]`/`[data-noise]`/`[data-guide]`/`[data-glow]` by the intro,
- * their inner details (bars, rings, lines, counters) by the intro then ambient
- * loops, and `[data-layer]` wrappers by scroll and pointer.
  */
 export function HeroClarity({
   children,
@@ -210,7 +204,7 @@ export function HeroClarity({
           )
           .to(cursor, { opacity: 0, duration: 0.35, ease: 'power1.out' }, 2.15)
 
-          // Copy: complexity is stated first, clarity comes into focus as the grid settles.
+          // Copy: statement arrives as the grid settles.
           .fromTo(
             q("[data-hero-item='meta']"),
             { opacity: 0, y: 12 },
@@ -409,8 +403,8 @@ function Guides() {
 function Glow() {
   return (
     <div data-glow className="absolute inset-0 -z-10">
-      <span className="absolute right-[2%] top-[4%] size-[18rem] rounded-full bg-accent/20 blur-[80px] lg:right-[6%] lg:size-[34rem] lg:blur-[120px]" />
-      <span className="absolute left-[6%] top-[38%] size-[14rem] rounded-full bg-accent-2/15 blur-[80px] lg:left-[14%] lg:top-[30%] lg:size-[28rem] lg:blur-[120px]" />
+      <span className="absolute right-[2%] top-[4%] size-[18rem] rounded-full bg-accent/22 blur-[80px] lg:right-[6%] lg:size-[34rem] lg:blur-[120px]" />
+      <span className="absolute left-[6%] top-[38%] size-[14rem] rounded-full bg-accent-2/18 blur-[80px] lg:left-[14%] lg:top-[30%] lg:size-[28rem] lg:blur-[120px]" />
     </div>
   );
 }
@@ -443,7 +437,7 @@ const bar = 'rounded-full bg-fg/[0.1]';
 
 const tones = {
   accent: 'bg-accent/15 text-accent',
-  violet: 'bg-accent-2/15 text-accent-2',
+  forest: 'bg-accent-2/15 text-accent-2',
   success: 'bg-success/15 text-success',
   warning: 'bg-warning/15 text-warning',
   danger: 'bg-danger/15 text-danger',
@@ -485,7 +479,7 @@ function Selection({ label }: { label?: string }) {
         />
       ))}
       {label && (
-        <span className="absolute -bottom-2.5 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-[4px] bg-accent px-1.5 py-0.5 font-mono text-[10px] leading-none text-white">
+        <span className="absolute -bottom-2.5 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-[4px] bg-[#2e4d3b] px-1.5 py-0.5 font-mono text-[10px] leading-none text-[#f6f3eb]">
           {label}
         </span>
       )}
@@ -504,7 +498,7 @@ function Cursor({ className }: { className?: string }) {
         height="18"
         viewBox="0 0 18 20"
         fill="none"
-        className="text-accent-2"
+        className="text-accent"
       >
         <path
           d="M1 1l15 7.5-6.6 1.9L6.4 18 1 1z"
@@ -514,15 +508,15 @@ function Cursor({ className }: { className?: string }) {
           strokeLinejoin="round"
         />
       </svg>
-      <span className="mt-3 rounded-full bg-accent-2 px-2 py-0.5 text-[10px] font-medium leading-tight text-white">
-        Duncan
+      <span className="mt-3 rounded-full bg-[#2e4d3b] px-2 py-0.5 text-[10px] font-medium leading-tight text-[#f6f3eb]">
+        ABCD
       </span>
     </span>
   );
 }
 
 /* -------------------------------------------------------------------------
-   Desktop: a full operations dashboard inside an app window.
+   Desktop: a full creative direction & product workspace inside an app window.
 ------------------------------------------------------------------------- */
 
 const KPIS: {
@@ -536,30 +530,30 @@ const KPIS: {
   trend: number[];
 }[] = [
   {
-    label: 'Open tasks',
-    count: 1284,
-    delta: '+12.4%',
+    label: 'Active deliverables',
+    count: 148,
+    delta: '+18.4%',
     tone: 'success',
     chaos: '-220,250,-10',
-    trend: [30, 42, 38, 55, 50, 68, 74],
+    trend: [30, 42, 38, 55, 50, 68, 78],
   },
   {
-    label: 'Avg. resolution',
-    count: 3.2,
+    label: 'Usability score',
+    count: 96.4,
     decimals: 1,
-    suffix: 'h',
-    delta: '−18%',
+    suffix: '%',
+    delta: '+14%',
     tone: 'success',
     chaos: '140,280,12',
-    trend: [80, 72, 76, 60, 58, 44, 40],
+    trend: [44, 52, 58, 66, 72, 84, 92],
   },
   {
-    label: 'SLA breaches',
-    count: 7,
-    delta: '+2',
-    tone: 'danger',
+    label: 'Open blockers',
+    count: 3,
+    delta: '−62%',
+    tone: 'warning',
     chaos: '380,-150,-8',
-    trend: [20, 26, 18, 30, 24, 40, 36],
+    trend: [52, 46, 40, 32, 26, 18, 12],
   },
 ];
 
@@ -576,36 +570,36 @@ const ROWS: {
   due: string;
 }[] = [
   {
-    task: 'Serve · Acme Law',
+    task: 'Opus Ortho · Brand system',
     who: 'bg-accent',
-    status: 'In progress',
-    tone: 'accent',
-    sla: 72,
-    due: '2h',
-  },
-  {
-    task: 'Affidavit · Pearson',
-    who: 'bg-warning',
-    status: 'Completed',
+    status: 'Delivered',
     tone: 'success',
     sla: 100,
-    due: 'Done',
+    due: 'Live',
   },
   {
-    task: 'Re-attempt · Kline',
+    task: 'Amplify · Stage & print',
     who: 'bg-accent-2',
-    status: 'Blocked',
-    tone: 'warning',
-    sla: 34,
-    due: '30m',
+    status: 'Delivered',
+    tone: 'success',
+    sla: 100,
+    due: 'Live',
   },
   {
-    task: 'Skip trace · Ortiz',
-    who: 'bg-success',
-    status: 'Review',
-    tone: 'violet',
-    sla: 58,
-    due: '4h',
+    task: 'Aioko · Identity suite',
+    who: 'bg-warning',
+    status: 'In review',
+    tone: 'accent',
+    sla: 84,
+    due: '2d',
+  },
+  {
+    task: 'A · Assess discovery',
+    who: 'bg-accent',
+    status: 'Active',
+    tone: 'forest',
+    sla: 62,
+    due: '4d',
   },
 ];
 
@@ -614,7 +608,7 @@ function Dashboard() {
     <div className="container-site hidden h-full pb-4 pt-8 lg:block">
       <div data-layer="tilt" className="h-full">
         <Frag chaos="0,70,-3" className="relative h-full">
-          <div className="flex h-full flex-col rounded-[var(--radius-lg)] border border-line-strong bg-surface-1/70 shadow-[0_50px_120px_-50px_rgb(0_0_0/0.7)] backdrop-blur-md">
+          <div className="flex h-full flex-col rounded-[var(--radius-lg)] border border-line-strong bg-surface-1/75 shadow-[0_50px_120px_-50px_rgb(0_0_0/0.55)] backdrop-blur-md">
             <WindowChrome />
             <div className="flex min-h-0 flex-1">
               <Frag
@@ -637,7 +631,7 @@ function Dashboard() {
                       <KpiCard {...kpi} />
                       {i === 0 && (
                         <>
-                          <Selection label="KPI card · Hug × 76" />
+                          <Selection label="Direction · Hug × 76" />
                           <Cursor className="-bottom-4 right-6" />
                         </>
                       )}
@@ -682,7 +676,7 @@ function WindowChrome() {
           />
           <path d="M2 4V2.8a2 2 0 014 0V4" stroke="currentColor" />
         </svg>
-        app.proofops.io/overview
+        abcd.studio/direction
       </span>
       <span className="w-12" />
     </div>
@@ -692,23 +686,25 @@ function WindowChrome() {
 function Sidebar() {
   const nav = [
     { label: 'Overview', active: true },
-    { label: 'Tasks', badge: '12' },
-    { label: 'Servers' },
-    { label: 'Reports' },
-    { label: 'Inbox' },
+    { label: 'Work', badge: '03' },
+    { label: 'Systems' },
+    { label: 'Research' },
+    { label: 'Deliver' },
   ];
-  const teams = [
-    { label: 'Northeast', dot: 'bg-success' },
-    { label: 'Midwest', dot: 'bg-warning' },
-    { label: 'West Coast', dot: 'bg-accent-2' },
+  const disciplines = [
+    { label: 'Brand Design', dot: 'bg-accent' },
+    { label: 'Digital UX', dot: 'bg-accent-2' },
+    { label: 'Product', dot: 'bg-success' },
   ];
   return (
     <div className="flex h-full flex-col gap-0.5 overflow-hidden p-3">
       <span className="mb-3 flex items-center gap-2 px-1.5">
-        <span className="size-5 rounded-[6px] bg-linear-to-br from-accent to-accent-2" />
-        <span className="text-xs font-medium text-fg">ProofOps</span>
+        <span className="grid size-5 place-items-center rounded-[6px] bg-[#2e4d3b] font-mono text-[9px] font-semibold text-[#f6f3eb]">
+          AB
+        </span>
+        <span className="text-xs font-medium text-fg">ABCD · Studio</span>
       </span>
-      <span className="meta mb-1 px-2 text-[10px] text-fg-subtle">Main</span>
+      <span className="meta mb-1 px-2 text-[10px] text-fg-subtle">Method</span>
       {nav.map((item) => (
         <span
           key={item.label}
@@ -727,16 +723,16 @@ function Sidebar() {
           />
           {item.label}
           {item.badge && (
-            <span className="ml-auto rounded-full bg-accent px-1.5 text-[10px] leading-4 text-white">
+            <span className="ml-auto rounded-full bg-[#2e4d3b] px-1.5 text-[10px] leading-4 text-[#f6f3eb]">
               {item.badge}
             </span>
           )}
         </span>
       ))}
       <span className="meta mb-1 mt-4 px-2 text-[10px] text-fg-subtle">
-        Teams
+        Disciplines
       </span>
-      {teams.map((t) => (
+      {disciplines.map((t) => (
         <span
           key={t.label}
           className="flex items-center gap-2 px-2 py-1 text-xs text-fg-muted"
@@ -746,12 +742,14 @@ function Sidebar() {
         </span>
       ))}
       <span className="mt-auto flex items-center gap-2 rounded-md border border-line px-2 py-2">
-        <span className="size-6 shrink-0 rounded-full bg-linear-to-br from-accent-2 to-accent" />
+        <span className="size-6 shrink-0 rounded-full bg-linear-to-br from-[#2e4d3b] to-accent-2" />
         <span className="flex min-w-0 flex-col">
           <span className="truncate text-[11px] font-medium text-fg">
-            Duncan T.
+            ABCD Consultancy
           </span>
-          <span className="truncate text-[10px] text-fg-subtle">Ops lead</span>
+          <span className="truncate text-[10px] text-fg-subtle">
+            A · B · C · D
+          </span>
         </span>
       </span>
     </div>
@@ -763,9 +761,11 @@ function DashHeader() {
     <div className="flex items-center gap-3">
       <span className="flex flex-col">
         <span className="text-[10px] text-fg-subtle">
-          Workspace / Operations
+          Consultancy / Creative Direction
         </span>
-        <span className="text-sm font-medium text-fg">Operations overview</span>
+        <span className="text-sm font-medium text-fg">
+          Brand &amp; product clarity
+        </span>
       </span>
       <span className="ml-auto flex h-7 w-44 items-center gap-2 rounded-md border border-accent/60 bg-bg/60 px-2.5 ring-4 ring-accent/10 xl:w-56">
         <svg
@@ -789,11 +789,11 @@ function DashHeader() {
             strokeLinecap="round"
           />
         </svg>
-        <span className="text-[11px] text-fg-muted">Find a task</span>
+        <span className="text-[11px] text-fg-muted">Search deliverables</span>
         <span data-caret className="-ml-1.5 h-3 w-px bg-accent" />
       </span>
       <span className="flex h-7 items-center gap-1.5 rounded-md border border-line px-2.5 text-[11px] text-fg-muted">
-        Last 30 days
+        Q4 · 2026
         <svg width="8" height="8" viewBox="0 0 8 8" fill="none">
           <path
             d="M1.5 3l2.5 2.5L6.5 3"
@@ -804,9 +804,9 @@ function DashHeader() {
         </svg>
       </span>
       <span className="flex items-center">
-        {['bg-accent-2', 'bg-warning', 'bg-success'].map((c) => (
+        {['bg-accent', 'bg-accent-2', 'bg-fg/40'].map((c, idx) => (
           <span
-            key={c}
+            key={idx}
             className={cn(
               '-ml-1.5 size-6 rounded-full ring-2 ring-surface-1 first:ml-0',
               c,
@@ -814,8 +814,8 @@ function DashHeader() {
           />
         ))}
       </span>
-      <span className="flex h-7 items-center rounded-md bg-accent px-3 text-[11px] font-medium text-white shadow-[0_6px_20px_-6px_var(--accent)]">
-        Export
+      <span className="flex h-7 items-center rounded-md bg-[#2e4d3b] px-3 text-[11px] font-medium text-[#f6f3eb] shadow-[0_6px_20px_-6px_var(--accent)]">
+        Deliver
       </span>
     </div>
   );
@@ -868,7 +868,7 @@ function KpiCard({
             strokeDasharray="1"
             strokeWidth="1.5"
             strokeLinecap="round"
-            className={tone === 'danger' ? 'stroke-danger' : 'stroke-success'}
+            className={tone === 'warning' ? 'stroke-warning' : 'stroke-accent'}
           />
         </svg>
       </span>
@@ -884,23 +884,27 @@ function ChartPanel() {
     <div className={cn(panel, 'flex h-full flex-col gap-3 p-3.5')}>
       <span className="flex items-center gap-4">
         <span className="flex flex-col">
-          <span className="text-xs font-medium text-fg">Tasks completed</span>
-          <span className="text-[10px] text-fg-subtle">Daily, all regions</span>
+          <span className="text-xs font-medium text-fg">
+            Direction velocity
+          </span>
+          <span className="text-[10px] text-fg-subtle">
+            Strategy to shipped delivery
+          </span>
         </span>
         <span className="flex items-center gap-1.5 text-[10px] text-fg-muted">
-          <span className="h-0.5 w-3 rounded-full bg-accent" /> This period
+          <span className="h-0.5 w-3 rounded-full bg-accent" /> Shipped
         </span>
         <span className="flex items-center gap-1.5 text-[10px] text-fg-muted">
           <span className="h-0 w-3 border-t border-dashed border-accent-2" />{' '}
-          Previous
+          Baseline
         </span>
         <span className="ml-auto flex rounded-md border border-line p-0.5 text-[10px]">
-          {['D', 'W', 'M'].map((p) => (
+          {['A', 'B', 'C', 'D'].map((p) => (
             <span
               key={p}
               className={cn(
                 'rounded px-2 py-0.5',
-                p === 'W' ? 'bg-fg/10 text-fg' : 'text-fg-subtle',
+                p === 'D' ? 'bg-accent/20 text-fg' : 'text-fg-subtle',
               )}
             >
               {p}
@@ -911,7 +915,7 @@ function ChartPanel() {
 
       <div className="flex min-h-0 flex-1 gap-2">
         <span className="flex flex-col justify-between pb-4 text-right font-mono text-[9px] leading-none text-fg-subtle">
-          {['2k', '1.5k', '1k', '500', '0'].map((t) => (
+          {['100', '75', '50', '25', '0'].map((t) => (
             <span key={t}>{t}</span>
           ))}
         </span>
@@ -978,13 +982,15 @@ function ChartPanel() {
             >
               <span className="absolute -left-[5px] -top-[5px] size-2.5 rounded-full border-2 border-bg bg-accent shadow-[0_0_0_4px_color-mix(in_srgb,var(--accent)_25%,transparent)]" />
               <span className="glass absolute -top-3 right-4 flex w-36 flex-col gap-1 rounded-[var(--radius-sm)] px-2.5 py-2">
-                <span className="text-[10px] text-fg-subtle">Thu, Oct 22</span>
+                <span className="text-[10px] text-fg-subtle">
+                  Delivery milestone
+                </span>
                 <span className="flex items-baseline justify-between">
                   <span className="text-sm font-medium tabular-nums text-fg">
-                    1,642
+                    Phase D
                   </span>
-                  <span className="text-[10px] font-medium text-success">
-                    +12.4%
+                  <span className="text-[10px] font-medium text-accent">
+                    +24.0%
                   </span>
                 </span>
               </span>
@@ -994,16 +1000,16 @@ function ChartPanel() {
               data-pop
               className="absolute left-[3%] top-[4%] flex items-center gap-1.5"
             >
-              <span className="grid size-5 place-items-center rounded-full rounded-bl-none bg-accent-2 text-[9px] font-medium text-white">
-                D
+              <span className="grid size-5 place-items-center rounded-full rounded-bl-none bg-[#2e4d3b] text-[9px] font-medium text-[#f6f3eb]">
+                A
               </span>
               <span className="glass rounded-full px-2 py-0.5 text-[10px] text-fg-muted">
-                Trend reads at a glance now ✓
+                Brand &amp; product aligned ✓
               </span>
             </span>
           </div>
           <span className="flex justify-between font-mono text-[9px] leading-none text-fg-subtle">
-            {['Oct 1', 'Oct 6', 'Oct 11', 'Oct 16', 'Oct 21', 'Oct 26'].map(
+            {['Assess', 'Audit', 'Build', 'System', 'Create', 'Deliver'].map(
               (t) => (
                 <span key={t}>{t}</span>
               ),
@@ -1018,28 +1024,28 @@ function ChartPanel() {
 function StatusCard() {
   const segments = [
     {
-      label: 'Completed',
-      len: 52,
+      label: 'Brand Design',
+      len: 44,
       offset: 0,
       stroke: 'stroke-accent',
       dot: 'bg-accent',
-      value: '54%',
+      value: '44%',
     },
     {
-      label: 'In progress',
-      len: 24,
-      offset: -55,
+      label: 'Digital UX',
+      len: 32,
+      offset: -47,
       stroke: 'stroke-accent-2',
       dot: 'bg-accent-2',
-      value: '26%',
+      value: '32%',
     },
     {
-      label: 'Blocked',
-      len: 12,
+      label: 'Product',
+      len: 20,
       offset: -82,
-      stroke: 'stroke-warning',
-      dot: 'bg-warning',
-      value: '14%',
+      stroke: 'stroke-fg/50',
+      dot: 'bg-fg/50',
+      value: '24%',
     },
   ];
   return (
@@ -1073,7 +1079,7 @@ function StatusCard() {
           ))}
         </svg>
         <span className="absolute inset-0 grid place-items-center text-[10px] font-medium tabular-nums text-fg xl:text-[11px]">
-          84%
+          100%
         </span>
       </span>
       <span className="flex min-w-0 flex-1 flex-col gap-1">
@@ -1096,14 +1102,14 @@ function TablePanel() {
   return (
     <div className={cn(panel, 'flex h-full flex-col overflow-hidden p-3.5')}>
       <span className="mb-2 flex items-center justify-between">
-        <span className="text-xs font-medium text-fg">Recent tasks</span>
-        <span className="text-[10px] text-accent">View all</span>
+        <span className="text-xs font-medium text-fg">Studio engagements</span>
+        <span className="text-[10px] text-accent">All work</span>
       </span>
       <span className="grid grid-cols-[1.5fr_1fr_0.9fr_0.5fr] gap-2 border-b border-line pb-1.5 font-mono text-[9px] uppercase tracking-wider text-fg-subtle">
-        <span>Task</span>
-        <span>Status</span>
-        <span>SLA</span>
-        <span className="text-right">Due</span>
+        <span>Client</span>
+        <span>Stage</span>
+        <span>Progress</span>
+        <span className="text-right">State</span>
       </span>
       {ROWS.map((r) => (
         <span
@@ -1129,10 +1135,10 @@ function TablePanel() {
               className={cn(
                 'block h-full rounded-full',
                 r.sla === 100
-                  ? 'bg-success'
-                  : r.sla < 40
+                  ? 'bg-accent'
+                  : r.sla < 70
                     ? 'bg-warning'
-                    : 'bg-accent',
+                    : 'bg-accent-2',
               )}
               style={{ width: `${r.sla}%` }}
             />
@@ -1193,7 +1199,7 @@ function MobileStructure() {
                 strokeLinecap="round"
               />
             </svg>
-            <span className="text-xs text-fg-muted">Find a task</span>
+            <span className="text-xs text-fg-muted">Search deliverables</span>
             <span data-caret className="-ml-1.5 h-3.5 w-px bg-accent" />
           </div>
         </Frag>
@@ -1202,8 +1208,8 @@ function MobileStructure() {
           chaos="180,-60,-28"
           className="col-start-4 row-start-2 self-center justify-self-end"
         >
-          <div className="flex h-6 w-11 items-center rounded-full border border-success/60 bg-success/70 p-0.5">
-            <span className="ml-auto size-4.5 rounded-full bg-white shadow-sm" />
+          <div className="flex h-6 w-11 items-center rounded-full border border-accent/60 bg-accent/80 p-0.5">
+            <span className="ml-auto size-4.5 rounded-full bg-[#f6f3eb] shadow-sm" />
           </div>
         </Frag>
 
@@ -1270,7 +1276,7 @@ function MobileStructure() {
                 <span
                   className={cn(
                     'grid size-3 shrink-0 place-items-center rounded-[3px] border',
-                    i < 2 ? 'border-success bg-success' : 'border-line-strong',
+                    i < 2 ? 'border-accent bg-accent' : 'border-line-strong',
                   )}
                 >
                   {i < 2 && (
@@ -1341,7 +1347,7 @@ function MobileStructure() {
                 />
               </svg>
               <span className="absolute inset-0 grid place-items-center font-mono text-[10px] text-fg">
-                84%
+                96%
               </span>
             </span>
             <span className="flex min-w-0 flex-1 flex-col gap-2.5">
@@ -1391,12 +1397,12 @@ function Noise() {
           rotate={-7}
         >
           <span className="block rounded-[var(--radius-sm)] border border-warning/40 bg-warning/15 px-3 py-2.5 text-xs text-warning shadow-[var(--shadow-float)]">
-            v3_final_FINAL(2).fig
+            brand_deck_v4_FINAL.fig
           </span>
         </Scrap>
         <Scrap className="left-[48%] top-[6%] lg:left-[33%]" rotate={4}>
           <span className="meta flex items-center gap-1.5 rounded-full border border-danger/50 bg-bg/60 px-2.5 py-1 text-danger">
-            <span className="size-1.5 rounded-full bg-danger" /> 12 issues
+            <span className="size-1.5 rounded-full bg-danger" /> disconnected
           </span>
         </Scrap>
         <Scrap
@@ -1404,7 +1410,7 @@ function Noise() {
           rotate={-3}
         >
           <span className="glass block rounded-[var(--radius-sm)] px-3 py-2 text-xs text-fg-muted">
-            where does this go?
+            missing hierarchy?
           </span>
         </Scrap>
         <Scrap
@@ -1414,7 +1420,7 @@ function Noise() {
           <span className="flex items-center gap-1.5">
             <span className="size-6 rounded-md border border-line bg-surface-2" />
             <span className="size-6 rounded-md border border-line bg-surface-3" />
-            <span className="meta text-fg-subtle">same?</span>
+            <span className="meta text-fg-subtle">off-brand?</span>
           </span>
         </Scrap>
         <Scrap
@@ -1427,14 +1433,14 @@ function Noise() {
           className="left-[56%] top-[88%] lg:left-[58%] lg:top-[3%]"
           rotate={-2}
         >
-          <span className="meta text-warning">TODO: fix spacing</span>
+          <span className="meta text-warning">TODO: align grid</span>
         </Scrap>
         <Scrap
           className="hidden lg:left-[68%] lg:top-[50%] lg:block"
           rotate={-5}
         >
           <span className="block max-w-40 text-sm leading-snug text-fg-subtle">
-            Lorem ipsum dolor sit amet, consectetur
+            Unconnected touchpoints slow growth
           </span>
         </Scrap>
         <Scrap
@@ -1442,7 +1448,7 @@ function Noise() {
           rotate={10}
         >
           <span className="meta rounded border border-line-strong bg-bg/60 px-1.5 py-0.5 text-fg-muted">
-            z-index: 9999
+            13px ≠ 16px
           </span>
         </Scrap>
         <Scrap
@@ -1450,7 +1456,7 @@ function Noise() {
           rotate={-4}
         >
           <span className="meta flex items-center gap-2 text-danger">
-            <span className="h-px w-10 bg-danger" /> 13px ≠ 16px
+            <span className="h-px w-10 bg-danger" /> fragmented UX
           </span>
         </Scrap>
         <Scrap

@@ -53,12 +53,12 @@ export default async function CaseStudyPage(props: PageProps<"/projects/[slug]">
           className="group inline-flex items-center gap-2 py-2 text-sm text-fg-muted transition-colors hover:text-fg"
         >
           <ArrowLeft className="size-4 transition-transform group-hover:-translate-x-1" strokeWidth={1.75} aria-hidden />
-          All projects
+          All work
         </Link>
 
         <div className="mt-10 grid gap-8 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-7">
-            <p className="meta text-fg-subtle">
+            <p className="meta text-accent">
               {project.category} · {formatDate(project.date, "year")}
             </p>
             <h1 className="mt-5 text-h1 font-medium">
@@ -87,8 +87,8 @@ export default async function CaseStudyPage(props: PageProps<"/projects/[slug]">
 
       <NextProject project={next} />
       <ClosingCta
-        eyebrow="Work together"
-        title="Working on something with this kind of complexity?"
+        eyebrow="Work with ABCD"
+        title="Need a clearer direction for your brand or product?"
       />
       <JsonLd data={caseStudyJsonLd(project)} />
     </article>

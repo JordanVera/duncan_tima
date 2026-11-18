@@ -4,31 +4,32 @@
 
 /* ---------------------------------------------------------------------------
    Semantic tokens. Light values live on :root, dark values on .dark.
-   Components only reference the semantic names, never raw hex values.
+   Aligned to ABCD (A Better Creative Direction) brand palette:
+   Charcoal #1B1B1B, Warm Cream #F6F3EB, Light Gray #E7E6E2, Forest Green #2E4D3B.
 --------------------------------------------------------------------------- */
 :root {
-  --bg: #f4f3f0;
-  --surface-1: #ecebe7;
-  --surface-2: #e3e2dd;
-  --surface-3: #d8d7d1;
-  --fg: #111112;
-  --fg-muted: #4f4f52;
-  --fg-subtle: #6f6f73;
-  --border: rgb(17 17 18 / 0.12);
-  --border-strong: rgb(17 17 18 / 0.24);
-  --inverse-bg: #111112;
-  --inverse-fg: #f4f3f0;
-  --glass: rgb(244 243 240 / 0.66);
-  --glass-strong: rgb(244 243 240 / 0.86);
-  --glass-border: rgb(17 17 18 / 0.1);
-  --media-frame: #e6e5e0;
-  --focus: #111112;
+  --bg: #f6f3eb;
+  --surface-1: #efece3;
+  --surface-2: #e7e6e2;
+  --surface-3: #dcdad3;
+  --fg: #1b1b1b;
+  --fg-muted: #4b4b48;
+  --fg-subtle: #6b6b66;
+  --border: rgb(27 27 27 / 0.12);
+  --border-strong: rgb(27 27 27 / 0.24);
+  --inverse-bg: #1b1b1b;
+  --inverse-fg: #f6f3eb;
+  --glass: rgb(246 243 235 / 0.72);
+  --glass-strong: rgb(246 243 235 / 0.9);
+  --glass-border: rgb(27 27 27 / 0.1);
+  --media-frame: #e7e6e2;
+  --focus: #2e4d3b;
   --danger: #8a1c1c;
-  --accent: #3b5bfd;
-  --accent-2: #7c4dff;
-  --success: #12a150;
-  --warning: #c27803;
-  --shadow-float: 0 1px 0 rgb(255 255 255 / 0.6) inset, 0 12px 40px -12px rgb(17 17 18 / 0.18);
+  --accent: #2e4d3b;
+  --accent-2: #406b52;
+  --success: #2e4d3b;
+  --warning: #a66308;
+  --shadow-float: 0 1px 0 rgb(255 255 255 / 0.6) inset, 0 12px 40px -12px rgb(27 27 27 / 0.16);
 
   --nav-offset: 6.5rem;
   --container: 88rem;
@@ -44,28 +45,28 @@
 }
 
 .dark {
-  --bg: #0b0b0c;
-  --surface-1: #121214;
-  --surface-2: #1a1a1d;
-  --surface-3: #242428;
-  --fg: #f5f5f4;
-  --fg-muted: #a8a8ad;
-  --fg-subtle: #85858b;
-  --border: rgb(245 245 244 / 0.1);
-  --border-strong: rgb(245 245 244 / 0.22);
-  --inverse-bg: #f5f5f4;
-  --inverse-fg: #0b0b0c;
-  --glass: rgb(22 22 25 / 0.58);
-  --glass-strong: rgb(18 18 20 / 0.84);
-  --glass-border: rgb(245 245 244 / 0.1);
-  --media-frame: #141416;
-  --focus: #f5f5f4;
+  --bg: #0f100f;
+  --surface-1: #171917;
+  --surface-2: #1f221f;
+  --surface-3: #292d29;
+  --fg: #f6f3eb;
+  --fg-muted: #b3b2ab;
+  --fg-subtle: #878680;
+  --border: rgb(246 243 235 / 0.11);
+  --border-strong: rgb(246 243 235 / 0.22);
+  --inverse-bg: #f6f3eb;
+  --inverse-fg: #1b1b1b;
+  --glass: rgb(23 25 23 / 0.62);
+  --glass-strong: rgb(18 20 18 / 0.86);
+  --glass-border: rgb(246 243 235 / 0.11);
+  --media-frame: #161816;
+  --focus: #4f8a68;
   --danger: #ff9b9b;
-  --accent: #6d8bff;
-  --accent-2: #a98bff;
-  --success: #4ade80;
+  --accent: #4f8a68;
+  --accent-2: #72ab89;
+  --success: #5ca679;
   --warning: #fbbf24;
-  --shadow-float: 0 1px 0 rgb(255 255 255 / 0.05) inset, 0 16px 48px -16px rgb(0 0 0 / 0.7);
+  --shadow-float: 0 1px 0 rgb(246 243 235 / 0.05) inset, 0 16px 48px -16px rgb(0 0 0 / 0.72);
 
   color-scheme: dark;
 }
@@ -89,7 +90,8 @@
   --color-success: var(--success);
   --color-warning: var(--warning);
 
-  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-sora), var(--font-inter), ui-sans-serif, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
 
   --text-display: clamp(2.75rem, 7.2vw, 6.75rem);
@@ -143,9 +145,13 @@
     font-feature-settings: "ss01", "cv11";
   }
 
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+  }
+
   ::selection {
-    background: var(--fg);
-    color: var(--bg);
+    background: var(--accent);
+    color: #f6f3eb;
   }
 
   h1, h2, h3, h4, [id] {
@@ -181,6 +187,10 @@
     max-width: var(--container);
     margin-inline: auto;
     padding-inline: var(--gutter);
+  }
+
+  .font-display {
+    font-family: var(--font-display);
   }
 
   .meta {
@@ -236,16 +246,20 @@
     margin-top: 1.1em;
   }
 
-  .logo-light {
+  .logo-light,
+  .theme-light-only {
     display: block;
   }
-  .logo-dark {
+  .logo-dark,
+  .theme-dark-only {
     display: none;
   }
-  .dark .logo-light {
+  .dark .logo-light,
+  .dark .theme-light-only {
     display: none;
   }
-  .dark .logo-dark {
+  .dark .logo-dark,
+  .dark .theme-dark-only {
     display: block;
   }
 }

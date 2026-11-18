@@ -1,7 +1,7 @@
 import type { Project } from "../types";
-import { proof } from "./proof";
-import { proofops } from "./proofops";
-import { userwise } from "./userwise";
+import { opusOrtho } from "./opus-ortho";
+import { amplify } from "./amplify";
+import { aioko } from "./aioko";
 
 /** Display order across the site. */
-export const projects: Project[] = [proof, proofops, userwise];
+export const projects: Project[] = [opusOrtho, amplify, aioko];

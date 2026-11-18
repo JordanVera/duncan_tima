@@ -63,7 +63,7 @@ export function ProjectsDisclosure({
         type="button"
         aria-expanded={open}
         aria-controls={panelId}
-        aria-label={open ? "Hide project previews" : "Show project previews"}
+        aria-label={open ? "Hide work previews" : "Show work previews"}
         onClick={() => setOpen((v) => !v)}
         onMouseEnter={onHover}
         onFocus={onHover}
@@ -87,7 +87,7 @@ export function ProjectsDisclosure({
             style={{ transformOrigin: "top center" }}
             className="glass glass-strong absolute left-1/2 top-[calc(100%+0.9rem)] w-[26rem] -translate-x-1/2 rounded-3xl p-2"
           >
-            <p className="meta px-3 pb-2 pt-2 text-fg-subtle">Selected projects</p>
+            <p className="meta px-3 pb-2 pt-2 text-fg-subtle">Selected work</p>
             <ul className="flex flex-col gap-1">
               {projects.map((p) => {
                 const status = projectStatus(projects, pathname, p.slug);
@@ -96,7 +96,7 @@ export function ProjectsDisclosure({
                     <Link
                       href={`/projects/${p.slug}`}
                       onClick={() => setOpen(false)}
-                      aria-label={`${p.name}, ${p.title}${status === "Next" ? " (next project)" : ""}`}
+                      aria-label={`${p.name}, ${p.title}${status === "Next" ? " (next case study)" : ""}`}
                       aria-current={status === "Viewing" ? "page" : undefined}
                       className="group flex items-center gap-4 rounded-2xl p-2 transition-colors hover:bg-surface-2 focus-visible:bg-surface-2"
                     >
@@ -106,7 +106,8 @@ export function ProjectsDisclosure({
                           alt=""
                           fill
                           sizes="96px"
-                          className="object-cover object-left-top transition-transform duration-500 ease-out-expo group-hover:scale-[1.04]"
+                          unoptimized={p.cover.src.endsWith(".svg")}
+                          className="object-cover object-center transition-transform duration-500 ease-out-expo group-hover:scale-[1.04]"
                         />
                       </span>
                       <span className="flex min-w-0 flex-1 flex-col">
@@ -127,7 +128,7 @@ export function ProjectsDisclosure({
               onClick={() => setOpen(false)}
               className="mt-1 flex items-center justify-between rounded-2xl px-3 py-3 text-sm text-fg-muted transition-colors hover:bg-surface-2 hover:text-fg"
             >
-              View the project index
+              View all case studies
               <ArrowRight className="size-4" strokeWidth={1.75} aria-hidden />
             </Link>
           </motion.div>

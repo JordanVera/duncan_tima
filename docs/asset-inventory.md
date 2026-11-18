@@ -1,82 +1,82 @@
 # Asset inventory
 
-All assets were captured on 25 Oct 2026 from Duncan's existing portfolio at `duncantima.framer.website` (password-protected; the password was entered manually in the browser and is not stored anywhere in this repository). Source files live on `framerusercontent.com`; very large originals were downloaded through Framer's `scale-down-to=2560` variant, which preserves aspect ratio.
+All brand, toolkit, and project assets were ingested from the ABCD client Google Drive folders (`ABCD DNA` and `DT Website Assets`) on 17 Nov 2026.
 
-Dimensions are the stored file's pixel size. "Fit" is how the site renders the image: `contain` keeps the full UI screenshot readable, `cover` is only used where cropping cannot hide interface detail.
+Dimensions are each stored file's pixel size (or SVG `viewBox`). "Fit" describes how `MediaFrame` renders each asset: `contain` keeps the full artwork or screenshot readable; `cover` is only used when an explicit aspect container is passed.
 
-## Brand
+## Brand logos (`public/images/logos/`)
 
-| File | Size | Used on | Notes |
+All 10 original logo files from `Logos/Website Logo/` are preserved at `1116×1116` in `public/images/logos/`, alongside tightly cropped web lockups in `public/images/logos/trimmed/` for crisp navbar/footer rendering without vertical padding.
+
+| File | Size | Trimmed (`trimmed/`) | Notes |
 | --- | --- | --- | --- |
-| `public/images/logo_main_white.png` | 875×649 | Header, footer, and mobile menu in the light theme | Supplied by Duncan. White pixel "D.T" with black outline and shadow, transparent background. |
-| `public/images/logo_main_black.png` | 875×649 | Header, footer, and mobile menu in the dark theme; OG image | Supplied by Duncan. Black pixel "D.T" with white detailing, transparent background. |
+| `public/images/logos/abcd_logo_hor.png` | 1116×1116 | 1056×308 | Horizontal ABCD \| A Better Creative Direction lockup (dark ink, light theme) |
+| `public/images/logos/abcd_logo_hor_wht.png` | 1116×1116 | 1056×308 | Horizontal ABCD \| A Better Creative Direction lockup (white ink, dark theme & OG) |
+| `public/images/logos/abcd_logo_vert.png` | 1116×1116 | 758×360 | Stacked monogram + full name horizontal lockup (dark ink) |
+| `public/images/logos/abcd_logo_vert_wht.png` | 1116×1116 | 758×360 | Stacked monogram + full name horizontal lockup (white ink) |
+| `public/images/logos/abcd_main_icon.png` | 1116×1116 | 680×1058 | Modular 2×2 ABCD quadrant monogram (dark ink) |
+| `public/images/logos/abcd_main_icon_wht.png` | 1116×1116 | 680×1058 | Modular 2×2 ABCD quadrant monogram (white ink) |
+| `public/images/logos/abcd_vert2.png` | 1116×1116 | 704×857 | Stacked vertical lockup (monogram above wordmark, dark ink) |
+| `public/images/logos/abcd_vert2_wht.png` | 1116×1116 | 704×857 | Stacked vertical lockup (monogram above wordmark, white ink) |
+| `public/images/logos/abcd_fav.png` | 1116×1116 | — | Square black icon with white curved "A" mark (also copied to `src/app/icon.png` & `apple-icon.png`) |
+| `public/images/logos/abcd_fav_wht.png` | 1116×1116 | 546×600 | Transparent white curved "A" mark |
 
 The theme-to-file mapping lives in `siteConfig.logo` (`src/lib/site-config.ts`).
 
-## Projects: Proof (`/projects/proof`, source `/proof`)
+## Work marks & Toolkit (`public/images/works/`, `public/images/toolkit/`)
 
-Order matches the source case study.
+| File | Format / Size | Notes |
+| --- | --- | --- |
+| `public/images/works/aiwokomain-logo.svg` | SVG (`1080×1080`) | Primary Aioko Japanese Cuisine lockup |
+| `public/images/works/aiwokosec-logo.svg` | SVG (`1080×1080`) | Secondary Aioko Japanese Cuisine lockup |
+| `public/images/works/oortho-icon.svg` | SVG (`1080×1080`) | OpusOrtho radial sun emblem |
+| `public/images/toolkit/figma.svg` / `figma.png` | SVG / 800×1200 | Figma symbol |
+| `public/images/toolkit/axure-light.svg` / `axure-dark.svg` | SVG (`322×77`) | Axure RP wordmark (light & dark theme variants) |
+| `public/images/toolkit/miro.svg` / `miro-dark.svg` / `miro.png` | SVG / 800×294 | Miro wordmark (light & dark theme variants) |
+| `public/images/toolkit/notion-light.svg` / `notion-dark.svg` | SVG (`180×63`) | Notion wordmark (light & dark theme variants) |
+| `public/images/toolkit/claude-light.svg` / `claude.svg` | SVG (`184×40`) | Claude wordmark (light & dark theme variants) |
 
-| # | File | Size | Source section | Fit |
-| --- | --- | --- | --- | --- |
-| 1 | `projects/proof/proof-cover.png` | 2560×1920 | Hero / homepage card | contain |
-| 2 | `projects/proof/proof-job-details-before.png` | 2556×1648 | Where we started | contain |
-| 3 | `projects/proof/proof-chat-intent-research.png` | 1506×816 | Research revealed | contain |
-| 4 | `projects/proof/proof-fragmented-job-pages.png` | 2560×1607 | The reframe | contain |
-| 5 | `projects/proof/proof-serve-as-container.png` | 1380×988 | The reframe (data model) | contain |
-| 6 | `projects/proof/proof-job-tracker-health.png` | 1049×776 | Solution: Job tracker | contain |
-| 7 | `projects/proof/proof-unified-history.png` | 814×812 | Solution: Unified history | contain |
-| 8 | `projects/proof/proof-address-intelligence.png` | 1334×798 | Solution: Address intelligence | contain |
-| 9 | `projects/proof/proof-global-job-selector.png` | 2571×422 | Enabling ops | contain |
-| 10 | `projects/proof/proof-key-takeaway.png` | 6400×4800 | Key takeaway | contain |
+## Projects: Aioko Japanese Cuisine (`/projects/aioko`)
 
-## Projects: ProofOPS (`/projects/proofops`, source `/proofops`)
-
-| # | File | Size | Source section | Fit |
-| --- | --- | --- | --- | --- |
-| 1 | `projects/proofops/proofops-cover.png` | 2560×1607 | Hero / homepage card | contain |
-| 2 | `public/video/proofops-background.mp4` | 1856×1080, 17.8 s | Background | contain (muted, no autoplay under reduced motion) |
-| 2a | `projects/proofops/proofops-background-poster.jpg` | 1856×1080 | Poster frame for the video (frame at 2 s) | contain |
-| 3 | `projects/proofops/proofops-legal-complexity.png` | 2560×1273 | Legal tech is complex | contain |
-| 4 | `projects/proofops/proofops-compounding-problems.png` | 1351×529 | The problem | contain |
-| 5 | `projects/proofops/proofops-job-lifecycle-map.png` | 2560×1607 | Mapping work | contain |
-| 6 | `projects/proofops/proofops-teams.png` | 1006×681 | Teams | contain |
-| 7 | `projects/proofops/proofops-roles.png` | 1440×904 | Roles | contain |
-| 8 | `projects/proofops/proofops-routing-logic.png` | 1440×904 | Routing logic | contain |
-| 9 | `projects/proofops/proofops-documentation.png` | 2880×1808 | Documentation | contain |
-
-## Projects: Userwise (`/projects/userwise`, source `/userwise`)
-
-| # | File | Size | Source section | Fit |
-| --- | --- | --- | --- | --- |
-| 1 | `projects/userwise/userwise-cover.png` | 2560×1920 | Hero / homepage card | contain |
-| 2 | `projects/userwise/userwise-overview.png` | 6400×4800 | Intro | contain |
-| 3 | `projects/userwise/userwise-process.png` | 6400×4800 | How I worked (sketches) | contain |
-| 4 | `projects/userwise/userwise-campaigns.png` | 6400×4800 | Campaigns | contain |
-| 5 | `projects/userwise/userwise-shops.png` | 6400×4800 | Shops | contain |
-| 6 | `projects/userwise/userwise-version-history.png` | 6400×4800 | Version history | contain |
-| 7 | `projects/userwise/userwise-json-upload.png` | 6400×4800 | JSON upload | contain |
-| 8 | `projects/userwise/userwise-outcome.png` | 6400×4800 | Outcome | contain |
-
-## Services (homepage "Services" section on the source)
-
-| File | Size | Service | Fit |
+| # | File | Size / ViewBox | Fit |
 | --- | --- | --- | --- |
-| `services/graphic-design-example.png` | 2048×2560 | Graphic Design | cover (poster artwork, no UI) |
-| `services/digital-design-example.png` | 2560×1002 | Digital Design | contain |
-| `services/social-media-design-example.png` | 1080×1350 | Social Media Design | cover (poster artwork, no UI) |
+| 1 | `public/images/projects/aioko/aiwokomain-logo.svg` | SVG (`1080×1080`) | contain |
+| 2 | `public/images/projects/aioko/aiwokosec-logo.svg` | SVG (`1080×1080`) | contain |
+| 3 | `public/images/projects/aioko/aioko-main-framed.svg` | SVG (`944×680`) | contain |
+| 4 | `public/images/projects/aioko/aioko-sec-framed.svg` | SVG (`882×600`) | contain |
 
-## Testimonials
+## Projects: Amplify Conference (`/projects/amplify`)
+
+| # | File | Size | Fit |
+| --- | --- | --- | --- |
+| 1 | `public/images/projects/amplify/amplify-collage.webp` | 1920×1256 | contain |
+| 2 | `public/images/projects/amplify/amplify-badges.png` | 1536×1024 | contain |
+| 3 | `public/images/projects/amplify/amplify-01.jpg` | 2228×1344 | contain |
+| 4 | `public/images/projects/amplify/amplify-04.jpg` | 1822×1492 | contain |
+| 5 | `public/images/projects/amplify/amplify-06.jpg` | 2210×1452 | contain |
+| 6 | `public/images/projects/amplify/amplify-07.jpg` | 2235×3353 | contain |
+| 7 | `public/images/projects/amplify/amplify-08.jpg` | 3432×2288 | contain |
+| 8 | `public/images/projects/amplify/amplify-09.jpg` | 2287×3430 | contain |
+| 9 | `public/images/projects/amplify/amplify-10.jpg` | 3443×2279 | contain |
+| 10 | `public/images/projects/amplify/amplify-15.jpg` | 3493×2287 | contain |
+
+## Projects: Opus Ortho (`/projects/opus-ortho`)
+
+| # | File | Size | Fit |
+| --- | --- | --- | --- |
+| 1 | `public/images/projects/opus-ortho/opus-website-board.png` | 1672×941 | contain |
+| 2 | `public/images/projects/opus-ortho/opus-brand-guidelines.png` | 1672×941 | contain |
+| 3 | `public/images/projects/opus-ortho/opus-card-mockup.png` | 1672×941 | contain |
+| 4 | `public/images/projects/opus-ortho/opus-three-panel-board.png` | 1672×941 | contain |
+| 5 | `public/images/projects/opus-ortho/opus-icon-grid.png` | 1254×1254 | contain |
+| 6 | `public/images/projects/opus-ortho/opus-story-cards.png` | 1254×1254 | contain |
+| 7 | `public/images/projects/opus-ortho/opus-business-card-lavender.png` | 1671×941 | contain |
+| 8 | `public/images/projects/opus-ortho/opus-portrait.png` | 1672×941 | contain |
+
+## Testimonials (`public/images/testimonials/`)
 
 | File | Size | Person |
 | --- | --- | --- |
-| `testimonials/frank-marricochi.jpg` | 389×389 | Frank Marricochi |
-| `testimonials/melanie-britton.jpg` | 400×400 | Melanie Britton |
-| `testimonials/robin-boyd.png` | 640×640 | Robin Boyd (transparent cut-out) |
-
-## Missing before launch
-
-| Needed | Where it appears | Current state |
-| --- | --- | --- |
-| A portrait or working photo of Duncan (JPG/PNG, at least 1600×2000, portrait orientation) saved as `public/images/about/duncan-tima-portrait.jpg` | `/about` | The source site has no photo of Duncan (the image in the hero slot is the D.T logo). A labeled neutral placeholder is shown until the file is added and `portrait` is set in `src/content/about.ts`. |
-| The services screenshot referenced in the brief | `src/content/services.ts` | Not received. Services currently mirror the live site (Graphic, Digital, Social Media Design) word for word. |
+| `public/images/testimonials/frank-marricochi.jpg` | 389×389 | Frank Marricochi |
+| `public/images/testimonials/melanie-britton.jpg` | 400×400 | Melanie Britton |
+| `public/images/testimonials/robin-boyd.png` | 640×640 | Robin Boyd |

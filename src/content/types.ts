@@ -76,20 +76,20 @@ export type CaseStudyBlock =
     }
   | {
       type: "diagram";
-      kind: "teamsRolesRouting";
+      kind: "abcdProcess";
       caption?: string;
     };
 
 export type Project = {
   slug: string;
   name: string;
-  /** Short category label, e.g. "Client experience redesign". */
+  /** Short category label, e.g. "Brand identity & web experience". */
   title: string;
   summary: string;
   client: string;
   role: string;
   service: string;
-  /** ISO date (YYYY-MM-DD) as published on the source case study. */
+  /** ISO date (YYYY-MM-DD). */
   date: string;
   category: string;
   cover: ImageAsset;
@@ -100,7 +100,23 @@ export type Service = {
   number: string;
   name: string;
   description: string;
+  deliverables: string[];
   example?: ImageAsset;
+};
+
+export type ToolkitItem = {
+  name: string;
+  category: string;
+  lightSrc: string;
+  darkSrc: string;
+  width: number;
+  height: number;
+};
+
+export type MethodologyStep = {
+  letter: "A" | "B" | "C" | "D";
+  word: string;
+  summary: string;
 };
 
 export type Testimonial = {
@@ -110,16 +126,27 @@ export type Testimonial = {
   avatar?: ImageAsset;
 };
 
-export type Experience = {
-  role: string;
-  company: string;
-  years: string;
+export type Pillar = {
+  number: string;
+  title: string;
+  description: string;
+};
+
+export type ClientSegment = {
+  label: string;
+  tier: string;
+  description: string;
 };
 
 export type About = {
   intro: string;
   positioning: string;
-  personal: string;
-  portrait?: ImageAsset;
-  experience: Experience[];
+  centralIdea: string;
+  purpose: string;
+  mission: string;
+  vision: string;
+  promise: string;
+  pillars: Pillar[];
+  idealClients: ClientSegment[];
+  methodology: MethodologyStep[];
 };

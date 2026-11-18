@@ -10,7 +10,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
       defaultTheme="dark"
       enableSystem={false}
       themes={["dark", "light"]}
-      storageKey="dt-theme"
+      storageKey="abcd-theme"
       disableTransitionOnChange
     >
       <MotionConfig reducedMotion="user">{children}</MotionConfig>

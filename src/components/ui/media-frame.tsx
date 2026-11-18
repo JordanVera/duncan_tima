@@ -25,6 +25,7 @@ export function MediaFrame({
 }) {
   const ratio = aspect ?? `${image.width} / ${image.height}`;
   const fit = aspect && image.fit === "cover" ? "object-cover" : "object-contain";
+  const isSvg = image.src.endsWith(".svg");
   return (
     <div
       className={cn("relative w-full overflow-hidden border border-line bg-media", rounded, className)}
@@ -37,6 +38,7 @@ export function MediaFrame({
         sizes={sizes}
         preload={preload}
         quality={85}
+        unoptimized={isSvg}
         className={cn(fit, imageClassName)}
       />
     </div>
