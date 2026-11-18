@@ -1,10 +1,9 @@
 /** Options shown in the inquiry form. Edit freely; validation reads from these lists. */
 export const projectTypes = [
-  "Product / UX design",
-  "UI design",
-  "Graphic design",
-  "Digital design",
-  "Social media design",
+  "Brand design",
+  "Digital experience / Website",
+  "Product design & UX",
+  "Full brand + product engagement",
   "Something else",
 ] as const;
 

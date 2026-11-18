@@ -128,8 +128,8 @@ export function MobileMenu({
                   className="glass glass-strong absolute inset-2 flex flex-col overflow-y-auto rounded-[1.75rem] sm:inset-3"
                 >
                   <div className="flex items-center justify-between px-4 pt-3 sm:px-5">
-                    <Link href="/" onClick={close} aria-label="Duncan Tima, home" className="-ml-1 rounded-xl p-1">
-                      <Logo className="w-11" />
+                    <Link href="/" onClick={close} aria-label={`${siteConfig.fullName}, home`} className="-ml-1 rounded-xl p-1">
+                      <Logo className="w-36" sizes="160px" />
                     </Link>
                     <button
                       ref={closeRef}
@@ -163,13 +163,13 @@ export function MobileMenu({
                               <span className="meta w-6 text-fg-subtle">{String(i + 1).padStart(2, "0")}</span>
                               <span
                                 className={cn(
-                                  "text-[2.25rem] font-medium leading-none tracking-[-0.04em]",
+                                  "font-display text-[2.25rem] font-medium leading-none tracking-[-0.04em]",
                                   current ? "text-fg" : "text-fg-muted",
                                 )}
                               >
                                 {link.label}
                               </span>
-                              {current && <span className="ml-auto size-1.5 self-center rounded-full bg-fg" aria-hidden />}
+                              {current && <span className="ml-auto size-1.5 self-center rounded-full bg-accent" aria-hidden />}
                             </Link>
                           </motion.li>
                         );
@@ -178,7 +178,7 @@ export function MobileMenu({
                   </nav>
 
                   <div className="px-4 pt-8 sm:px-5">
-                    <p className="meta mb-3 text-fg-subtle">Selected projects</p>
+                    <p className="meta mb-3 text-fg-subtle">Selected work</p>
                     <ul className="grid grid-cols-3 gap-2">
                       {projects.map((p) => {
                         const status = projectStatus(projects, pathname, p.slug);
@@ -191,7 +191,14 @@ export function MobileMenu({
                               className="block rounded-2xl p-1 transition-colors hover:bg-surface-2"
                             >
                               <span className="relative block aspect-[4/3] overflow-hidden rounded-xl bg-media">
-                                <Image src={p.cover.src} alt="" fill sizes="33vw" className="object-cover object-left-top" />
+                                <Image
+                                  src={p.cover.src}
+                                  alt=""
+                                  fill
+                                  sizes="33vw"
+                                  unoptimized={p.cover.src.endsWith(".svg")}
+                                  className="object-cover object-center"
+                                />
                               </span>
                               <span className="mt-2 block px-1 text-sm font-medium text-fg">{p.name}</span>
                               <span className="block px-1 pb-1 text-xs text-fg-muted">{status ?? p.title}</span>
@@ -206,9 +213,9 @@ export function MobileMenu({
                     <Link
                       href="/contact"
                       onClick={() => setOpen(false)}
-                      className="inline-flex h-14 items-center justify-between rounded-full bg-inverse px-6 text-base font-medium text-on-inverse"
+                      className="inline-flex h-14 items-center justify-between rounded-full border border-[#2e4d3b] bg-[#2e4d3b] px-6 text-base font-medium text-[#f6f3eb] dark:border-white/15"
                     >
-                      Let’s talk
+                      Start a project
                       <ArrowUpRight className="size-5" strokeWidth={1.75} aria-hidden />
                     </Link>
                     <div className="flex items-center justify-between gap-4 text-sm text-fg-muted">

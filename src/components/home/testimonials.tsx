@@ -24,15 +24,15 @@ export function Testimonials({ items }: { items: Testimonial[] }) {
     <section aria-labelledby="testimonials-title" className="container-site py-section">
       <div className="grid gap-12 lg:grid-cols-12">
         <div className="lg:col-span-4">
-          <Eyebrow number="04">Kind words</Eyebrow>
+          <Eyebrow number="04">Client perspective</Eyebrow>
           <h2 id="testimonials-title" className="mt-6 text-h2 font-medium">
-            What people say
+            Trusted by teams and founders
           </h2>
         </div>
 
         <div className="lg:col-span-8">
           <figure className="border-t border-line-strong pt-8">
-            <blockquote className="text-[clamp(1.5rem,2.6vw,2.4rem)] font-medium leading-[1.2] tracking-[-0.03em] text-balance">
+            <blockquote className="font-display text-[clamp(1.5rem,2.6vw,2.4rem)] font-medium leading-[1.2] tracking-[-0.03em] text-balance">
               <p>“{featured.quote}”</p>
             </blockquote>
             <div className="mt-8">

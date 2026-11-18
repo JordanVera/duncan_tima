@@ -2,7 +2,7 @@ import type { CaseStudyBlock } from "@/content/types";
 import { MediaFrame } from "@/components/ui/media-frame";
 import { Reveal } from "@/components/ui/reveal";
 import { cn } from "@/lib/cn";
-import { TeamsRolesRoutingDiagram } from "./diagram";
+import { AbcdProcessDiagram } from "./diagram";
 
 const prose = "max-w-[42rem]";
 const contentSizes = "(min-width: 1280px) 66vw, (min-width: 768px) 90vw, 94vw";
@@ -22,7 +22,7 @@ function Block({ block, first }: { block: CaseStudyBlock; first: boolean }) {
     case "sectionHeading":
       return (
         <header id={block.id} className={cn("border-t border-line pt-8", first ? "mt-0" : "mt-24 md:mt-32")}>
-          <p className="meta text-fg-subtle">{block.eyebrow}</p>
+          <p className="meta text-accent">{block.eyebrow}</p>
           <h2 className="mt-4 max-w-3xl text-h2 font-medium text-balance">{block.title}</h2>
         </header>
       );
@@ -37,7 +37,7 @@ function Block({ block, first }: { block: CaseStudyBlock; first: boolean }) {
             ))}
           </div>
           {block.callout && (
-            <p className="mt-8 border-l border-fg pl-5 text-h3 font-medium text-fg text-balance">{block.callout}</p>
+            <p className="mt-8 border-l-2 border-accent pl-5 font-display text-h3 font-medium text-fg text-balance">{block.callout}</p>
           )}
         </div>
       );
@@ -113,7 +113,7 @@ function Block({ block, first }: { block: CaseStudyBlock; first: boolean }) {
             {block.items.map((m) => (
               <div key={m.label} className={cn("flex flex-col gap-3 p-6 md:p-8", block.tone === "outcome" ? "bg-surface-2" : "bg-surface-1")}>
                 <dt className="order-2 text-[0.95rem] leading-snug text-fg-muted">{m.label}</dt>
-                <dd className="order-1 text-[clamp(2.5rem,5vw,4rem)] font-medium leading-none tracking-[-0.045em] text-fg">{m.value}</dd>
+                <dd className="order-1 font-display text-[clamp(2.5rem,5vw,4rem)] font-medium leading-none tracking-[-0.045em] text-fg">{m.value}</dd>
               </div>
             ))}
           </dl>
@@ -127,7 +127,7 @@ function Block({ block, first }: { block: CaseStudyBlock; first: boolean }) {
           <div className="mt-10 grid gap-x-10 gap-y-8 sm:grid-cols-2">
             {block.items.map((f, i) => (
               <div key={f.title} className="border-t border-line pt-5">
-                <p className="meta text-fg-subtle">{String(i + 1).padStart(2, "0")}</p>
+                <p className="meta text-accent">{String(i + 1).padStart(2, "0")}</p>
                 <h3 className="mt-3 text-lg font-medium text-fg">{f.title}</h3>
                 <p className="mt-2 leading-relaxed text-fg-muted">{f.body}</p>
               </div>
@@ -140,7 +140,7 @@ function Block({ block, first }: { block: CaseStudyBlock; first: boolean }) {
           {block.items.map((f, i) => (
             <div key={f.title} className="grid items-center gap-8 md:grid-cols-12 md:gap-10">
               <div className={cn("md:col-span-5", i % 2 === 1 && "md:order-2 md:col-start-8")}>
-                <p className="meta text-fg-subtle">{String(i + 1).padStart(2, "0")}</p>
+                <p className="meta text-accent">{String(i + 1).padStart(2, "0")}</p>
                 <h3 className="mt-3 text-h3 font-medium text-fg">{f.title}</h3>
                 <p className="mt-4 leading-[1.7] text-fg-muted">{f.body}</p>
               </div>
@@ -157,7 +157,7 @@ function Block({ block, first }: { block: CaseStudyBlock; first: boolean }) {
     case "diagram":
       return (
         <figure className="mt-10">
-          <TeamsRolesRoutingDiagram />
+          <AbcdProcessDiagram />
           {block.caption && <figcaption className="mt-3 text-sm text-fg-subtle">{block.caption}</figcaption>}
         </figure>
       );

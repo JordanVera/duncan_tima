@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { ArrowUpRight, CalendarDays, Mail, Phone, UserRound } from "lucide-react";
+import { ArrowUpRight, CalendarDays, Mail, Phone, Building2 } from "lucide-react";
 import { discoveryCall, siteConfig } from "@/lib/site-config";
 import { InquiryForm } from "@/components/contact/inquiry-form";
 import { ButtonLink } from "@/components/ui/button-link";
@@ -7,37 +7,36 @@ import { ButtonLink } from "@/components/ui/button-link";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Start a project inquiry with Duncan Tima, UI/UX and product designer. Share what you’re building, or request a discovery call.",
+    "Start a project inquiry with ABCD — A Better Creative Direction. Tell us what you’re building or request a discovery call.",
   alternates: { canonical: "/contact" },
 };
 
 const direct = [
   { icon: Mail, label: "Email", value: siteConfig.email, href: `mailto:${siteConfig.email}` },
   { icon: Phone, label: "Phone", value: siteConfig.phone.display, href: siteConfig.phone.href },
-  { icon: UserRound, label: "LinkedIn", value: "duncan-t", href: siteConfig.linkedin, external: true },
+  { icon: Building2, label: "LinkedIn", value: "ABCD Consultancy", href: siteConfig.linkedin, external: true },
 ];
 
 export default function ContactPage() {
   return (
     <section aria-labelledby="contact-title" className="container-site pb-section pt-10 md:pt-16">
-      <p className="meta text-fg-subtle">Contact</p>
+      <p className="meta text-accent">Contact</p>
       <div className="mt-6 grid gap-14 lg:grid-cols-12 lg:gap-10">
         <div className="lg:col-span-5">
           <h1 id="contact-title" className="text-h1 font-medium text-balance">
-            Let’s make something complex feel simple.
+            Let’s set a better creative direction.
           </h1>
           <p className="mt-8 max-w-md text-lead text-fg-muted">
-            Tell me about the product, the people using it, and where they get stuck. The more context, the better the first
-            conversation.
+            Tell us about your business, your product, and where clarity is missing. The more context you share, the more focused our first conversation will be.
           </p>
 
           <div className="mt-12 rounded-[var(--radius-lg)] border border-line bg-surface-1 p-6 sm:p-7">
-            <CalendarDays className="size-5 text-fg" strokeWidth={1.5} aria-hidden />
+            <CalendarDays className="size-5 text-accent" strokeWidth={1.5} aria-hidden />
             <h2 className="mt-5 text-lg font-medium">Prefer to talk it through first?</h2>
             <p className="mt-2 text-sm leading-relaxed text-fg-muted">
               {siteConfig.bookingUrl
-                ? "Pick a time that works for you for a short discovery call."
-                : "Send a quick email with a few times that work for you, and I’ll confirm a discovery call."}
+                ? "Pick a time that works for your team for an introductory discovery call."
+                : "Send a quick note with a few times that work for your team, and we’ll confirm a discovery call."}
             </p>
             <ButtonLink href={discoveryCall.href} external={discoveryCall.external} variant="secondary" className="mt-6">
               {discoveryCall.label}

@@ -6,7 +6,7 @@ import { motion, useMotionValueEvent, useScroll } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 import { useState } from 'react';
 import { Logo } from '@/components/ui/logo';
-import { navLinks } from '@/lib/site-config';
+import { navLinks, siteConfig } from '@/lib/site-config';
 import { cn } from '@/lib/cn';
 import { spring } from '@/lib/motion';
 import { ThemeToggle } from './theme-toggle';
@@ -39,24 +39,25 @@ export function NavBar({ projects }: { projects: NavProject[] }) {
 
   return (
     <header className="pointer-events-none fixed inset-x-0 top-0 z-50">
-      <div className="container-site flex items-start justify-between pt-3 sm:pt-4 lg:pt-5">
+      <div className="container-site flex items-center justify-between pt-3 sm:pt-4 lg:pt-5">
         <Link
           href="/"
-          aria-label="Duncan Tima, home"
-          className="pointer-events-auto group relative -ml-2 flex items-center rounded-2xl p-2"
+          aria-label={`${siteConfig.fullName}, home`}
+          className="pointer-events-auto group relative -ml-2 flex items-center rounded-2xl px-3 py-2"
         >
           <span
             aria-hidden
             className={cn(
-              'absolute inset-0 rounded-2xl transition-opacity duration-300',
+              'absolute inset-0 rounded-2xl border border-line bg-surface-1/95 shadow-[var(--shadow-float)] backdrop-blur-md transition-opacity duration-300',
               compact ? 'opacity-100' : 'opacity-0',
             )}
           />
           <Logo
             preload
+            sizes="180px"
             className={cn(
-              'relative origin-top-left transition-[width] duration-300 ease-out-expo',
-              compact ? 'w-11 sm:w-12' : 'w-14 sm:w-16',
+              'relative origin-left transition-[width] duration-300 ease-out-expo',
+              compact ? 'w-32 sm:w-36' : 'w-36 sm:w-44',
             )}
           />
         </Link>
@@ -105,7 +106,7 @@ export function NavBar({ projects }: { projects: NavProject[] }) {
                     <span className="relative flex items-center gap-2">
                       {isCurrent && (
                         <span
-                          className="size-1 rounded-full bg-fg"
+                          className="size-1.5 rounded-full bg-accent"
                           aria-hidden
                         />
                       )}
@@ -129,9 +130,9 @@ export function NavBar({ projects }: { projects: NavProject[] }) {
           <Link
             href="/contact"
             aria-current={talkActive ? 'page' : undefined}
-            className="group ml-1 inline-flex h-10 items-center gap-1.5 rounded-full bg-inverse pl-4 pr-3.5 text-sm font-medium text-on-inverse transition-transform duration-200 hover:-translate-y-px active:translate-y-0"
+            className="group ml-1 inline-flex h-10 items-center gap-1.5 rounded-full border border-[#2e4d3b] bg-[#2e4d3b] pl-4 pr-3.5 text-sm font-medium text-[#f6f3eb] transition-[transform,background-color] duration-200 hover:-translate-y-px hover:bg-[#385d47] active:translate-y-0 dark:border-white/15"
           >
-            Let’s talk
+            Start a project
             <ArrowUpRight
               className="size-4 transition-transform duration-300 ease-out-expo group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
               strokeWidth={1.75}
